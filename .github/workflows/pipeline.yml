@@ -12,8 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Debug Repository
-        run: |pwd
-        ls -R
+        run: |
+          pwd
+          ls -R
       - name: Upload Dataset to Hugging Face Hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
