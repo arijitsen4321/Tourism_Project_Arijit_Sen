@@ -10,7 +10,7 @@ jobs:
 register-dataset:
 runs-on: ubuntu-latest
 
-```
+
 steps:
   - uses: actions/checkout@v4
 
@@ -29,13 +29,13 @@ steps:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
     run: |
       python tourism_project/model_building/data_register.py
-```
+
 
 data-prep:
 needs: register-dataset
 runs-on: ubuntu-latest
 
-```
+
 steps:
   - uses: actions/checkout@v4
 
@@ -54,13 +54,13 @@ steps:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
     run: |
       python tourism_project/model_building/prep.py
-```
+
 
 model-training:
 needs: data-prep
 runs-on: ubuntu-latest
 
-```
+
 steps:
   - uses: actions/checkout@v4
 
@@ -79,13 +79,12 @@ steps:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
     run: |
       python tourism_project/model_building/train.py
-```
 
 deploy-hosting:
 needs: model-training
 runs-on: ubuntu-latest
 
-```
+
 steps:
   - uses: actions/checkout@v4
 
@@ -104,4 +103,3 @@ steps:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
     run: |
       python tourism_project/hosting/hosting.py
-```
